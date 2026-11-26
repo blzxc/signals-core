@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MarkupLoader.cs" />
+    <Compile Include="MarkupWriter.cs" />
     <Compile Include="OfflineFilter.cs" />
     <Compile Include="OnlineFilter.cs" />
     <Compile Include="OutOfRangeEventArgs.cs" />
