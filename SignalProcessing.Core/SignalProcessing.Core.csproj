@@ -43,8 +43,16 @@
   <ItemGroup>
     <Compile Include="CircularBuffer.cs" />
     <Compile Include="ExponentialSmoothingFilter.cs" />
+    <Compile Include="GeneratorParameters.cs" />
+    <Compile Include="ISignalGenerator.cs" />
+    <Compile Include="LineGenerator.cs" />
+    <Compile Include="LineParameters.cs" />
     <Compile Include="MarkupLoader.cs" />
     <Compile Include="MarkupWriter.cs" />
+    <Compile Include="MeanderGenerator.cs" />
+    <Compile Include="MeanderParameters.cs" />
+    <Compile Include="NoiseGenerator.cs" />
+    <Compile Include="NoiseParameters.cs" />
     <Compile Include="OfflineFilter.cs" />
     <Compile Include="OfflineMedianFilter.cs" />
     <Compile Include="OnlineFilter.cs" />
@@ -52,12 +60,20 @@
     <Compile Include="OutOfRangeEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resampler.cs" />
+    <Compile Include="SamplingParameters.cs" />
+    <Compile Include="SawGenerator.cs" />
+    <Compile Include="SawParameters.cs" />
+    <Compile Include="SignalGeneratorFactory.cs" />
     <Compile Include="SignalOperations.cs" />
+    <Compile Include="SineGenerator.cs" />
+    <Compile Include="SineParameters.cs" />
     <Compile Include="SingleChannelRangeAnalyzer.cs" />
     <Compile Include="SingleChannelSignal.cs" />
     <Compile Include="SingleChannelSignalReader.cs" />
     <Compile Include="SingleChannelSignalWriter.cs" />
     <Compile Include="ThresholdCutter.cs" />
+    <Compile Include="TriangleGenerator.cs" />
+    <Compile Include="TriangleParameters.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
