@@ -21,6 +21,11 @@ namespace SignalProcessing.Core
             {
                 throw new ArgumentOutOfRangeException(nameof(duration), "Длительность должна быть положительной");
             }
+            double count = (double)samplingRate * duration + 0.5;
+            if (count > int.MaxValue)
+            {
+                throw new ArgumentOutOfRangeException(nameof(duration), "Слишком большое число отсчетов");
+            }
             SamplingRate = samplingRate;
             Duration = duration;
             SampleCount = (int)(samplingRate * duration + 0.5);
