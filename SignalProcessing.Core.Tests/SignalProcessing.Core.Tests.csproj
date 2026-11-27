@@ -43,7 +43,11 @@
   <ItemGroup>
     <Compile Include="AssertSignal.cs" />
     <Compile Include="OfflineFilterTests.cs" />
+    <Compile Include="OnlineFilterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SignalFileTests.cs" />
+    <Compile Include="SignalOperationsTests.cs" />
+    <Compile Include="SingleChannelSignalTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk">
