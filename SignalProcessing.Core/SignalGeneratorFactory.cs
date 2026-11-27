@@ -22,6 +22,12 @@ namespace SignalProcessing.Core
                     return new LineGenerator(line.K, line.B);
                 case NoiseParameters noise:
                     return new NoiseGenerator(noise.Range);
+                case SawParameters saw:
+                    return new SawGenerator(saw.Period, saw.Phase, saw.Amplitude);
+                case TriangleParameters triangle:
+                    return new TriangleGenerator(triangle.Period, triangle.Phase, triangle.Amplitude);
+                case MeanderParameters meander:
+                    return new MeanderGenerator(meander.Period, meander.Phase, meander.Amplitude, meander.DutyCycle);
                 default:
                     throw new NotSupportedException(
                         $"Неподдерживаемый тип: {parameters.GetType().Name}");
