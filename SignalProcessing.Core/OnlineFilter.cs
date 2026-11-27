@@ -29,6 +29,14 @@ namespace SignalProcessing.Core
 
             for (int i = 0; i < data.Length; i++)
             {
+                if (_buffer.Count == 0)
+                {
+                    for (int j = 0; j < _windowSize - 1; j++)
+                    {
+                        _buffer.Add(data[i]);
+                    }
+                }
+
                 // Добавляем новый отсчёт и удаляем вышедший из окна
                 _buffer.Add(data[i]);
                 if (_buffer.Count > _windowSize)
