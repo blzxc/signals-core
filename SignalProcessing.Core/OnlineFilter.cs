@@ -9,7 +9,9 @@ namespace SignalProcessing.Core
     public class OnlineFilter
     {
         private int _windowSize;
-        private List<float> _buffer = new List<float>();
+        private CircularBuffer<float> _buffer;
+        private double _sum;
+        private bool _started;
 
         public OnlineFilter(int windowSize)
         {
@@ -18,6 +20,7 @@ namespace SignalProcessing.Core
                 throw new ArgumentOutOfRangeException(nameof(windowSize), "Размер окна должен быть положительным");
             }
             _windowSize = windowSize;
+            _buffer = new CircularBuffer<float>(windowSize);
         }
         public float[] Filter(float[] data)
         {
@@ -29,26 +32,35 @@ namespace SignalProcessing.Core
 
             for (int i = 0; i < data.Length; i++)
             {
-                if (_buffer.Count == 0)
+                if (!_started)
                 {
                     for (int j = 0; j < _windowSize - 1; j++)
                     {
                         _buffer.Add(data[i]);
                     }
+                    _sum = (double)(_windowSize - 1) * data[i];
+                    _started = true;
                 }
 
                 // Добавляем новый отсчёт и удаляем вышедший из окна
-                _buffer.Add(data[i]);
-                if (_buffer.Count > _windowSize)
+                if (_buffer.IsFull)
                 {
-                    _buffer.RemoveAt(0);
+                    _sum -= _buffer[0];
                 }
+                _buffer.Add(data[i]);
+                _sum += data[i];
 
                 // Усредняем значения в окне
-                newSignal[i] = _buffer.Sum() / _windowSize;
+                newSignal[i] = (float)(_sum / _windowSize);
             }
 
             return newSignal;
+        }
+        public void Reset()
+        {
+            _buffer.Clear();
+            _sum = 0;
+            _started = false;
         }
     }
 }
