@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="AssertSignal.cs" />
     <Compile Include="CircularBufferTests.cs" />
+    <Compile Include="ExponentialSmoothingFilterTests.cs" />
     <Compile Include="OfflineFilterTests.cs" />
     <Compile Include="OfflineMedianFilterTests.cs" />
     <Compile Include="OnlineFilterTests.cs" />
