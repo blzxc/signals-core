@@ -8,49 +8,76 @@ namespace SignalProcessing.Core
 {
     public sealed class CircularBuffer<T>
     {
+        private T[] _items;
+        private int _start;
+        private int _count;
+
         public CircularBuffer(int capacity)
         {
-            throw new NotImplementedException();
+            if (capacity <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(capacity), "Ёмкость должна быть положительной");
+            }
+            _items = new T[capacity];
         }
         public int Capacity
         {
             get
             {
-                throw new NotImplementedException();
+                return _items.Length;
             }
         }
         public int Count
         {
             get
             {
-                throw new NotImplementedException();
+                return _count;
             }
         }
         public bool IsFull
         {
             get
             {
-                throw new NotImplementedException();
+                return _count == Capacity;
             }
         }
         public void Add(T item)
         {
-            throw new NotImplementedException();
+            if (IsFull)
+            {
+                _items[_start] = item;
+                _start = (_start + 1) % Capacity;
+            }
+            else
+            {
+                _items[(_start + _count) % Capacity] = item;
+                _count++;
+            }
         }
         public T this[int index]
         {
             get
             {
-                throw new NotImplementedException();
+                if (index < 0 || index >= _count)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(index), "Индекс вне диапазона элементов буфера");
+                }
+                return _items[(_start + index) % Capacity];
             }
         }
         public T[] ToArray()
         {
-            throw new NotImplementedException();
+            T[] result = new T[_count];
+            for (int i = 0; i < _count; i++)
+            {
+                result[i] = _items[(_start + i) % Capacity];
+            }
+            return result;
         }
         public void Clear()
         {
-            throw new NotImplementedException();
+            _start = 0;
+            _count = 0;
         }
     }
 }
