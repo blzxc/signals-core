@@ -14,14 +14,34 @@ namespace SignalProcessing.Core
 
             using (StreamReader reader = new StreamReader(filePath))
             {
-                float freq = (float.Parse(reader.ReadLine()));
+                string first_line = reader.ReadLine();
+                if (first_line == null)
+                {
+                    throw new InvalidDataException("Файл пуст");
+                }
+                float freq;
+                if (!float.TryParse(first_line, out freq))
+                {
+                    throw new InvalidDataException("Строка 1: частота не является числом");
+                }
+                if (freq <= 0)
+                {
+                    throw new InvalidDataException("Строка 1: частота должна быть положительной");
+                }
                 List<float> value = new List<float>();
+                int line_number = 1;
                 while (true)
                 {
                     string line = reader.ReadLine();
                     if (line == null)
                         break;
-                    value.Add(float.Parse(line));
+                    line_number++;
+                    float element;
+                    if (!float.TryParse(line, out element))
+                    {
+                        throw new InvalidDataException("Строка " + line_number + ": значение не является числом");
+                    }
+                    value.Add(element);
                 }
                 float[] arrSignal = value.ToArray();
                 SingleChannelSignal data = new SingleChannelSignal(arrSignal, freq);

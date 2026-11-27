@@ -13,10 +13,18 @@ namespace SignalProcessing.Core
 
         public OnlineFilter(int windowSize)
         {
+            if (windowSize <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(windowSize), "Размер окна должен быть положительным");
+            }
             _windowSize = windowSize;
         }
         public float[] Filter(float[] data)
         {
+            if (data == null)
+            {
+                throw new ArgumentNullException(nameof(data));
+            }
             float[] newSignal = new float[data.Length];
 
             for (int i = 0; i < data.Length; i++)

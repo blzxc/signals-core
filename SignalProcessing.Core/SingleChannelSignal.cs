@@ -11,6 +11,14 @@ namespace SignalProcessing.Core
     {
         public SingleChannelSignal(float[] data, float frequency)
         {
+            if (data == null)
+            {
+                throw new ArgumentNullException(nameof(data));
+            }
+            if (frequency <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(frequency), "Частота должна быть положительной");
+            }
             Data = data;
             Frequency = frequency;
         }
