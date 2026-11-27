@@ -9,6 +9,7 @@ namespace SignalProcessing.Core.Tests
 {
     public class OnlineFilterTests
     {
+        //--------------Тест 10
         [Fact]
         public void Filter_LinearSignal_ReturnsExpected()
         {
@@ -20,6 +21,7 @@ namespace SignalProcessing.Core.Tests
             AssertSignal.Equal(new float[] { 1, 4f / 3, 2, 3, 4 }, result);
         }
 
+        //--------------Тест 11
         [Fact]
         public void Filter_TwoCalls_ReturnsSameAsOneCall()
         {
@@ -34,6 +36,7 @@ namespace SignalProcessing.Core.Tests
             AssertSignal.Equal(new float[] { 1, 4f / 3, 2, 3, 4 }, result);
         }
 
+        //--------------Тест 12
         [Theory]
         [InlineData(1)]
         [InlineData(7)]
@@ -54,6 +57,7 @@ namespace SignalProcessing.Core.Tests
             AssertSignal.Equal(expected, result.ToArray());
         }
 
+        //--------------Тест 13
         [Fact]
         public void Filter_RandomSignal_EqualsOfflineWithDelay()
         {
@@ -68,6 +72,7 @@ namespace SignalProcessing.Core.Tests
             }
         }
 
+        //--------------Тест 14
         [Theory]
         [InlineData(0)]
         [InlineData(-1)]
@@ -77,6 +82,7 @@ namespace SignalProcessing.Core.Tests
                 () => new OnlineFilter(windowSize));
         }
 
+        //--------------Тест 33
         [Fact]
         public void Reset_AfterSignal_SameAsNewFilter()
         {
@@ -92,6 +98,7 @@ namespace SignalProcessing.Core.Tests
             AssertSignal.Equal(expected, result);
         }
 
+        //--------------Тест 34
         [Fact]
         public void Filter_WindowSizeOne_ReturnsInput()
         {
@@ -103,6 +110,7 @@ namespace SignalProcessing.Core.Tests
             AssertSignal.Equal(data, result);
         }
 
+        //--------------Тест 35
         [Fact]
         public void Filter_LongSignal_MatchesDirectCalculation()
         {

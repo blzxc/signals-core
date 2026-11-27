@@ -9,6 +9,7 @@ namespace SignalProcessing.Core.Tests
 {
     public class CircularBufferTests
     {
+        //--------------Тест из п. 4.2
         [Fact]
         public void Add_BeyondCapacity_OldestElementsAreDropped()
         {
@@ -23,6 +24,7 @@ namespace SignalProcessing.Core.Tests
             Assert.Equal(5, buffer[2]);
         }
 
+        //--------------Тест из п. 4.2
         [Theory]
         [InlineData(-1)]
         [InlineData(2)]
@@ -35,6 +37,7 @@ namespace SignalProcessing.Core.Tests
             Assert.Throws<ArgumentOutOfRangeException>(() => buffer[index]);
         }
 
+        //--------------Тест 25
         [Fact]
         public void Constructor_NewBuffer_IsEmpty()
         {
@@ -46,6 +49,7 @@ namespace SignalProcessing.Core.Tests
             Assert.Empty(buffer.ToArray());
         }
 
+        //--------------Тест 26
         [Fact]
         public void Add_TwoElements_OrderPreserved()
         {
@@ -59,6 +63,7 @@ namespace SignalProcessing.Core.Tests
             Assert.Equal(new[] { 10, 20 }, buffer.ToArray());
         }
 
+        //--------------Тест 27
         [Fact]
         public void Add_CapacityElements_IsFull()
         {
@@ -72,6 +77,7 @@ namespace SignalProcessing.Core.Tests
             Assert.True(buffer.IsFull);
         }
 
+        //--------------Тест 28
         [Fact]
         public void Add_CapacityOne_KeepsOnlyLast()
         {
@@ -84,6 +90,7 @@ namespace SignalProcessing.Core.Tests
             Assert.Equal(new[] { 3 }, buffer.ToArray());
         }
 
+        //--------------Тест 29
         [Fact]
         public void Add_ThousandElements_KeepsLastSeven()
         {
@@ -97,6 +104,7 @@ namespace SignalProcessing.Core.Tests
             Assert.Equal(new[] { 994, 995, 996, 997, 998, 999, 1000 }, buffer.ToArray());
         }
 
+        //--------------Тест 30
         [Fact]
         public void Clear_AfterOverflow_KeepsOnlyNewElement()
         {
@@ -113,6 +121,7 @@ namespace SignalProcessing.Core.Tests
             Assert.Equal(42, buffer[0]);
         }
 
+        //--------------Тест 31
         [Theory]
         [InlineData(0)]
         [InlineData(-1)]
@@ -121,6 +130,7 @@ namespace SignalProcessing.Core.Tests
             Assert.Throws<ArgumentOutOfRangeException>(() => new CircularBuffer<int>(capacity));
         }
 
+        //--------------Тест 32
         [Fact]
         public void ToArray_ResultChanged_BufferNotChanged()
         {

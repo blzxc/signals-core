@@ -9,6 +9,7 @@ namespace SignalProcessing.Core.Tests
 {
     public class SingleChannelSignalTests
     {
+        //--------------Тест 1
         [Fact]
         public void Constructor_NullData_Throws()
         {
@@ -16,6 +17,7 @@ namespace SignalProcessing.Core.Tests
                 () => new SingleChannelSignal(null, 100));
         }
 
+        //--------------Тест 2
         [Theory]
         [InlineData(0f)]
         [InlineData(-1f)]

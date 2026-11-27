@@ -9,6 +9,7 @@ namespace SignalProcessing.Core.Tests
 {
     public class OfflineFilterTests
     {
+        //--------------Тест 3
         [Fact]
         public void Filter_ConstantSignal_ReturnsSameConstant()
         {
@@ -26,6 +27,7 @@ namespace SignalProcessing.Core.Tests
             }
         }
 
+        //--------------Тест 4
         [Fact]
         public void Filter_LinearSignal_ReturnsExpected()
         {
@@ -36,6 +38,7 @@ namespace SignalProcessing.Core.Tests
             AssertSignal.Equal(new float[] { 4f / 3, 2, 3, 4, 14f / 3 }, result);
         }
 
+        //--------------Тест 5
         [Fact]
         public void Filter_Impulse_ReturnsSpreadImpulse()
         {
@@ -46,6 +49,7 @@ namespace SignalProcessing.Core.Tests
             AssertSignal.Equal(new float[] { 0, 0, 1f / 3, 1f / 3, 1f / 3, 0, 0 }, result);
         }
 
+        //--------------Тест 6
         [Fact]
         public void Filter_WindowSizeOne_ReturnsCopyOfInput()
         {
@@ -57,6 +61,7 @@ namespace SignalProcessing.Core.Tests
             Assert.NotSame(data, result);
         }
 
+        //--------------Тест 7
         [Theory]
         [InlineData(0)]
         [InlineData(-1)]
@@ -69,6 +74,7 @@ namespace SignalProcessing.Core.Tests
                 () => OfflineFilter.Filter(data, windowSize));
         }
 
+        //--------------Тест 8
         [Fact]
         public void Filter_NullData_Throws()
         {
@@ -76,6 +82,7 @@ namespace SignalProcessing.Core.Tests
                 () => OfflineFilter.Filter(null, 3));
         }
 
+        //--------------Тест 8
         [Fact]
         public void Filter_EmptyData_ReturnsEmpty()
         {
@@ -86,6 +93,7 @@ namespace SignalProcessing.Core.Tests
             Assert.Empty(result);
         }
 
+        //--------------Тест 9
         [Fact]
         public void Filter_InputData_NotChanged()
         {

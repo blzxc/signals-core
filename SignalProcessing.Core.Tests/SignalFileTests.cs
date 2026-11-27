@@ -26,6 +26,7 @@ namespace SignalProcessing.Core.Tests
             File.Delete(_filePath);
         }
 
+        //--------------Тест 15
         [Fact]
         public void WriteAndRead_Signal_ReturnsSameSignal()
         {
@@ -38,6 +39,7 @@ namespace SignalProcessing.Core.Tests
             AssertSignal.Equal(signal.Data, result.Data);
         }
 
+        //--------------Тест 16
         [Fact]
         public void Write_RussianCulture_UsesDot()
         {
@@ -57,6 +59,7 @@ namespace SignalProcessing.Core.Tests
             }
         }
 
+        //--------------Тест 17
         [Fact]
         public void Read_RussianCulture_ParsesDot()
         {
@@ -76,6 +79,7 @@ namespace SignalProcessing.Core.Tests
             }
         }
 
+        //--------------Тест 18
         [Fact]
         public void Read_OnlyFrequency_ReturnsEmptySignal()
         {
@@ -87,12 +91,14 @@ namespace SignalProcessing.Core.Tests
             Assert.Empty(result.Data);
         }
 
+        //--------------Тест 19
         [Fact]
         public void Read_EmptyFile_Throws()
         {
             Assert.Throws<InvalidDataException>(() => SingleChannelSignalReader.Read(_filePath));
         }
 
+        //--------------Тест 19
         [Fact]
         public void Read_NotNumberValue_Throws()
         {
@@ -101,6 +107,7 @@ namespace SignalProcessing.Core.Tests
             Assert.Throws<InvalidDataException>(() => SingleChannelSignalReader.Read(_filePath));
         }
 
+        //--------------Тест 19
         [Fact]
         public void Read_ZeroFrequency_Throws()
         {

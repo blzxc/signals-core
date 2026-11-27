@@ -9,6 +9,7 @@ namespace SignalProcessing.Core.Tests
 {
     public class SignalOperationsTests
     {
+        //--------------Тест 20
         [Fact]
         public void Sum_DifferentLength_ReturnsSumWithZeros()
         {
@@ -21,6 +22,7 @@ namespace SignalProcessing.Core.Tests
             Assert.Equal(100f, result.Frequency, 1e-5f);
         }
 
+        //--------------Тест 21
         [Fact]
         public void Concat_TwoSignals_ReturnsJoinedSignal()
         {
@@ -33,6 +35,7 @@ namespace SignalProcessing.Core.Tests
             Assert.Equal(100f, result.Frequency, 1e-5f);
         }
 
+        //--------------Тест 22
         [Fact]
         public void Sum_DifferentFrequencies_Throws()
         {
@@ -42,6 +45,7 @@ namespace SignalProcessing.Core.Tests
             Assert.Throws<ArgumentException>(() => SignalOperations.Sum(new[] { first, second }));
         }
 
+        //--------------Тест 22
         [Fact]
         public void Concat_DifferentFrequencies_Throws()
         {
@@ -51,6 +55,7 @@ namespace SignalProcessing.Core.Tests
             Assert.Throws<ArgumentException>(() => SignalOperations.Concat(new[] { first, second }));
         }
 
+        //--------------Тест 23
         [Fact]
         public void Sum_EmptyList_Throws()
         {
@@ -59,12 +64,14 @@ namespace SignalProcessing.Core.Tests
             Assert.Throws<ArgumentException>(() => SignalOperations.Sum(signals));
         }
 
+        //--------------Тест 23
         [Fact]
         public void Sum_NullList_Throws()
         {
             Assert.Throws<ArgumentNullException>(() => SignalOperations.Sum(null));
         }
 
+        //--------------Тест 23
         [Fact]
         public void Sum_ListWithNull_Throws()
         {
@@ -73,6 +80,7 @@ namespace SignalProcessing.Core.Tests
             Assert.Throws<ArgumentNullException>(() => SignalOperations.Sum(new[] { first, null }));
         }
 
+        //--------------Тест 24
         [Fact]
         public void Sum_SourceSignals_NotChanged()
         {
