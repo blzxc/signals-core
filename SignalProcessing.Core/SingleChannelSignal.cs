@@ -9,21 +9,21 @@ namespace SignalProcessing.Core
 {
     public class SingleChannelSignal
     {
-        public SingleChannelSignal(float freq, float[] value)
+        public SingleChannelSignal(float[] data, float frequency)
         {
-            Freq = freq;
-            Value = value;
+            Data = data;
+            Frequency = frequency;
         }
-        public float Freq { get; }
-        public float[] Value { get; }
+        public float[] Data { get; }
+        public float Frequency { get; }
         public float[] TimeTick
         {
             get
             {
-                float[] timeTick = new float[Value.Length];
-                for (int i = 0; i < Value.Length; i++)
+                float[] timeTick = new float[Data.Length];
+                for (int i = 0; i < Data.Length; i++)
                 {
-                    timeTick[i] = i / Freq;
+                    timeTick[i] = i / Frequency;
                 }
                 return timeTick;
             }

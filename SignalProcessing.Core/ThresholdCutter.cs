@@ -22,34 +22,34 @@ namespace SignalProcessing.Core
         }
         public void CutUp(float upThr)
         {
-            for(int i = 0; i < _signal.Value.Count(); i++)
+            for(int i = 0; i < _signal.Data.Count(); i++)
             {
-                if (_signal.Value[i] > upThr) {
-                    _signal.Value[i] = upThr;
+                if (_signal.Data[i] > upThr) {
+                    _signal.Data[i] = upThr;
                 }
             }
         }
         public void CutDown(float downThr)
         {
-            for (int i = 0; i < _signal.Value.Count(); i++)
+            for (int i = 0; i < _signal.Data.Count(); i++)
             {
-                if (_signal.Value[i] < downThr)
+                if (_signal.Data[i] < downThr)
                 {
-                    _signal.Value[i] = downThr;
+                    _signal.Data[i] = downThr;
                 }
             }
         }
         public void CutUpAndDown(float upThr, float downThr)
         {
-            for (int i = 0; i < _signal.Value.Count(); i++)
+            for (int i = 0; i < _signal.Data.Count(); i++)
             {
-                if (_signal.Value[i] > upThr)
+                if (_signal.Data[i] > upThr)
                 {
-                    _signal.Value[i] = upThr;
+                    _signal.Data[i] = upThr;
                 }
-                else if (_signal.Value[i] < downThr)
+                else if (_signal.Data[i] < downThr)
                 {
-                    _signal.Value[i] = downThr;
+                    _signal.Data[i] = downThr;
                 }
             }
         }

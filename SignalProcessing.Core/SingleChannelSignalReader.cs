@@ -9,7 +9,7 @@ namespace SignalProcessing.Core
 {
     public static class SingleChannelSignalReader
     {
-        static public SingleChannelSignal Load(string filePath)
+        static public SingleChannelSignal Read(string filePath)
         {
 
             using (StreamReader reader = new StreamReader(filePath))
@@ -24,7 +24,7 @@ namespace SignalProcessing.Core
                     value.Add(float.Parse(line));
                 }
                 float[] arrSignal = value.ToArray();
-                SingleChannelSignal data = new SingleChannelSignal(freq, arrSignal);
+                SingleChannelSignal data = new SingleChannelSignal(arrSignal, freq);
                 return data;
             }
 
