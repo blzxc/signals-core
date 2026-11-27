@@ -45,6 +45,7 @@
     <Compile Include="CircularBufferTests.cs" />
     <Compile Include="ExponentialSmoothingFilterTests.cs" />
     <Compile Include="LineGeneratorTests.cs" />
+    <Compile Include="MarkerDetectedEventArgsTests.cs" />
     <Compile Include="MeanderGeneratorTests.cs" />
     <Compile Include="NoiseGeneratorTests.cs" />
     <Compile Include="OfflineFilterTests.cs" />
@@ -55,11 +56,14 @@
     <Compile Include="ResamplerTests.cs" />
     <Compile Include="SamplingParametersTests.cs" />
     <Compile Include="SawGeneratorTests.cs" />
+    <Compile Include="SignalAnalysisResultTests.cs" />
     <Compile Include="SignalFileTests.cs" />
     <Compile Include="SignalGeneratorFactoryTests.cs" />
+    <Compile Include="SignalMarkerTests.cs" />
     <Compile Include="SignalOperationsTests.cs" />
     <Compile Include="SineGeneratorTests.cs" />
     <Compile Include="SingleChannelSignalTests.cs" />
+    <Compile Include="ThresholdAnalyzerTests.cs" />
     <Compile Include="TriangleGeneratorTests.cs" />
   </ItemGroup>
   <ItemGroup>
