@@ -13,11 +13,11 @@ namespace SignalProcessing.Core
 
         public SamplingParameters(float samplingRate, float duration)
         {
-            if (samplingRate <= 0)
+            if (!(samplingRate > 0))
             {
                 throw new ArgumentOutOfRangeException(nameof(samplingRate), "Частота квантования должна быть положительной");
             }
-            if (duration <= 0)
+            if (!(duration > 0))
             {
                 throw new ArgumentOutOfRangeException(nameof(duration), "Длительность должна быть положительной");
             }
