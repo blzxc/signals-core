@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,7 @@ namespace SignalProcessing.Core
                     throw new InvalidDataException("Файл пуст");
                 }
                 float freq;
-                if (!float.TryParse(first_line, out freq))
+                if (!float.TryParse(first_line, NumberStyles.Float, CultureInfo.InvariantCulture, out freq))
                 {
                     throw new InvalidDataException("Строка 1: частота не является числом");
                 }
@@ -37,7 +38,7 @@ namespace SignalProcessing.Core
                         break;
                     line_number++;
                     float element;
-                    if (!float.TryParse(line, out element))
+                    if (!float.TryParse(line, NumberStyles.Float, CultureInfo.InvariantCulture, out element))
                     {
                         throw new InvalidDataException("Строка " + line_number + ": значение не является числом");
                     }
