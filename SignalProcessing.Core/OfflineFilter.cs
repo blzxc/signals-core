@@ -18,6 +18,10 @@ namespace SignalProcessing.Core
             {
                 throw new ArgumentOutOfRangeException(nameof(windowSize), "Размер окна должен быть положительным и нечётным");
             }
+            if (data.Length == 0)
+            {
+                return new float[0];
+            }
             int M = (windowSize - 1) / 2;
 
             // Создаём расширенный массив с дублированием крайних значений
