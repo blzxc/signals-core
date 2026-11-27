@@ -48,6 +48,7 @@
     <Compile Include="ISignalGenerator.cs" />
     <Compile Include="LineGenerator.cs" />
     <Compile Include="LineParameters.cs" />
+    <Compile Include="MarkerDetectedEventArgs.cs" />
     <Compile Include="MarkupLoader.cs" />
     <Compile Include="MarkupWriter.cs" />
     <Compile Include="MeanderGenerator.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="SingleChannelSignal.cs" />
     <Compile Include="SingleChannelSignalReader.cs" />
     <Compile Include="SingleChannelSignalWriter.cs" />
+    <Compile Include="ThresholdAnalyzer.cs" />
     <Compile Include="ThresholdCutter.cs" />
     <Compile Include="TriangleGenerator.cs" />
     <Compile Include="TriangleParameters.cs" />
