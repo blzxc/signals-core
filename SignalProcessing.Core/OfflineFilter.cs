@@ -10,21 +10,18 @@ namespace SignalProcessing.Core
     {
         static public float[] Filter(float[] data, int windowSize)
         {
-            //int M = (windowSize - 1) / 2;
-            //IEnumerable<float> x = Enumerable.Range(0, M).Select(el => data[0]);
-            //IEnumerable<float> z = Enumerable.Range(0, M).Select(el => data.Last());
-            //float[] y = x.Concat(data).Concat(z).ToArray();
-
-            //float[] newSignal = new float[data.Length];
-
-            //for (int i = 0; i < y.Length; i++)
-            //{
-            //    y[i] += (data[i - M]) / windowSize;
-            //}
-
-            //return newSignal;
-            // Расширяем сигнал в начале и конце дублированием первого и последнего значений
-            // Проверка входных параметров
+            if (data == null)
+            {
+                throw new ArgumentNullException(nameof(data));
+            }
+            if (windowSize <= 0 || windowSize % 2 == 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(windowSize), "Размер окна должен быть положительным и нечётным");
+            }
+            if (data.Length == 0)
+            {
+                return new float[0];
+            }
             int M = (windowSize - 1) / 2;
 
             // Создаём расширенный массив с дублированием крайних значений
