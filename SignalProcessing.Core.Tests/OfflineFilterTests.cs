@@ -9,8 +9,7 @@ namespace SignalProcessing.Core.Tests
 {
     public class OfflineFilterTests
     {
-        //--------------Тест 3
-        [Fact]
+        [Fact] //Тест 3
         public void Filter_ConstantSignal_ReturnsSameConstant()
         {
             // Arrange
@@ -27,8 +26,7 @@ namespace SignalProcessing.Core.Tests
             }
         }
 
-        //--------------Тест 4
-        [Fact]
+        [Fact] //Тест 4
         public void Filter_LinearSignal_ReturnsExpected()
         {
             float[] data = { 1, 2, 3, 4, 5 };
@@ -38,8 +36,7 @@ namespace SignalProcessing.Core.Tests
             AssertSignal.Equal(new float[] { 4f / 3, 2, 3, 4, 14f / 3 }, result);
         }
 
-        //--------------Тест 5
-        [Fact]
+        [Fact] //Тест 5
         public void Filter_Impulse_ReturnsSpreadImpulse()
         {
             float[] data = { 0, 0, 0, 1, 0, 0, 0 };
@@ -49,8 +46,7 @@ namespace SignalProcessing.Core.Tests
             AssertSignal.Equal(new float[] { 0, 0, 1f / 3, 1f / 3, 1f / 3, 0, 0 }, result);
         }
 
-        //--------------Тест 6
-        [Fact]
+        [Fact] //Тест 6
         public void Filter_WindowSizeOne_ReturnsCopyOfInput()
         {
             float[] data = { 1, 5, -2, 7 };
@@ -61,8 +57,7 @@ namespace SignalProcessing.Core.Tests
             Assert.NotSame(data, result);
         }
 
-        //--------------Тест 7
-        [Theory]
+        [Theory] //Тест 7
         [InlineData(0)]
         [InlineData(-1)]
         [InlineData(4)]
@@ -74,16 +69,14 @@ namespace SignalProcessing.Core.Tests
                 () => OfflineFilter.Filter(data, windowSize));
         }
 
-        //--------------Тест 8
-        [Fact]
+        [Fact] //Тест 8
         public void Filter_NullData_Throws()
         {
             Assert.Throws<ArgumentNullException>("data",
                 () => OfflineFilter.Filter(null, 3));
         }
 
-        //--------------Тест 8
-        [Fact]
+        [Fact] //Тест 8
         public void Filter_EmptyData_ReturnsEmpty()
         {
             float[] data = { };
@@ -93,8 +86,7 @@ namespace SignalProcessing.Core.Tests
             Assert.Empty(result);
         }
 
-        //--------------Тест 9
-        [Fact]
+        [Fact] //Тест 9
         public void Filter_InputData_NotChanged()
         {
             float[] data = { 1, 2, 3, 4, 5 };

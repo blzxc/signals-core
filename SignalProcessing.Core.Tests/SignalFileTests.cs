@@ -26,8 +26,7 @@ namespace SignalProcessing.Core.Tests
             File.Delete(_filePath);
         }
 
-        //--------------Тест 15
-        [Fact]
+        [Fact] //Тест 15
         public void WriteAndRead_Signal_ReturnsSameSignal()
         {
             SingleChannelSignal signal = new SingleChannelSignal(new float[] { 0.5f, -1.25f, 3f, 0.1f }, 250);
@@ -39,8 +38,7 @@ namespace SignalProcessing.Core.Tests
             AssertSignal.Equal(signal.Data, result.Data);
         }
 
-        //--------------Тест 16
-        [Fact]
+        [Fact] //Тест 16
         public void Write_RussianCulture_UsesDot()
         {
             SingleChannelSignal signal = new SingleChannelSignal(new float[] { 0.5f, -1.25f, 3f }, 250);
@@ -59,8 +57,7 @@ namespace SignalProcessing.Core.Tests
             }
         }
 
-        //--------------Тест 17
-        [Fact]
+        [Fact] //Тест 17
         public void Read_RussianCulture_ParsesDot()
         {
             File.WriteAllLines(_filePath, new[] { "100", "0.5", "-1.5" });
@@ -79,8 +76,7 @@ namespace SignalProcessing.Core.Tests
             }
         }
 
-        //--------------Тест 18
-        [Fact]
+        [Fact] //Тест 18
         public void Read_OnlyFrequency_ReturnsEmptySignal()
         {
             File.WriteAllLines(_filePath, new[] { "250" });
@@ -91,15 +87,13 @@ namespace SignalProcessing.Core.Tests
             Assert.Empty(result.Data);
         }
 
-        //--------------Тест 19
-        [Fact]
+        [Fact] //Тест 19
         public void Read_EmptyFile_Throws()
         {
             Assert.Throws<InvalidDataException>(() => SingleChannelSignalReader.Read(_filePath));
         }
 
-        //--------------Тест 19
-        [Fact]
+        [Fact] //Тест 19
         public void Read_NotNumberValue_Throws()
         {
             File.WriteAllLines(_filePath, new[] { "100", "1", "abc", "2" });
@@ -107,8 +101,7 @@ namespace SignalProcessing.Core.Tests
             Assert.Throws<InvalidDataException>(() => SingleChannelSignalReader.Read(_filePath));
         }
 
-        //--------------Тест 19
-        [Fact]
+        [Fact] //Тест 19
         public void Read_ZeroFrequency_Throws()
         {
             File.WriteAllLines(_filePath, new[] { "0", "1", "2" });

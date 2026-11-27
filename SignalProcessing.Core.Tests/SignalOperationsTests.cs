@@ -9,8 +9,7 @@ namespace SignalProcessing.Core.Tests
 {
     public class SignalOperationsTests
     {
-        //--------------Тест 20
-        [Fact]
+        [Fact] //Тест 20
         public void Sum_DifferentLength_ReturnsSumWithZeros()
         {
             SingleChannelSignal first = new SingleChannelSignal(new float[] { 1, 2, 3 }, 100);
@@ -22,8 +21,7 @@ namespace SignalProcessing.Core.Tests
             Assert.Equal(100f, result.Frequency, 1e-5f);
         }
 
-        //--------------Тест 21
-        [Fact]
+        [Fact] //Тест 21
         public void Concat_TwoSignals_ReturnsJoinedSignal()
         {
             SingleChannelSignal first = new SingleChannelSignal(new float[] { 1, 2 }, 100);
@@ -35,8 +33,7 @@ namespace SignalProcessing.Core.Tests
             Assert.Equal(100f, result.Frequency, 1e-5f);
         }
 
-        //--------------Тест 22
-        [Fact]
+        [Fact] //Тест 22
         public void Sum_DifferentFrequencies_Throws()
         {
             SingleChannelSignal first = new SingleChannelSignal(new float[] { 1, 2 }, 100);
@@ -45,8 +42,7 @@ namespace SignalProcessing.Core.Tests
             Assert.Throws<ArgumentException>(() => SignalOperations.Sum(new[] { first, second }));
         }
 
-        //--------------Тест 22
-        [Fact]
+        [Fact] //Тест 22
         public void Concat_DifferentFrequencies_Throws()
         {
             SingleChannelSignal first = new SingleChannelSignal(new float[] { 1, 2 }, 100);
@@ -55,8 +51,7 @@ namespace SignalProcessing.Core.Tests
             Assert.Throws<ArgumentException>(() => SignalOperations.Concat(new[] { first, second }));
         }
 
-        //--------------Тест 23
-        [Fact]
+        [Fact] //Тест 23
         public void Sum_EmptyList_Throws()
         {
             List<SingleChannelSignal> signals = new List<SingleChannelSignal>();
@@ -64,15 +59,13 @@ namespace SignalProcessing.Core.Tests
             Assert.Throws<ArgumentException>(() => SignalOperations.Sum(signals));
         }
 
-        //--------------Тест 23
-        [Fact]
+        [Fact] //Тест 23
         public void Sum_NullList_Throws()
         {
             Assert.Throws<ArgumentNullException>(() => SignalOperations.Sum(null));
         }
 
-        //--------------Тест 23
-        [Fact]
+        [Fact] //Тест 23
         public void Sum_ListWithNull_Throws()
         {
             SingleChannelSignal first = new SingleChannelSignal(new float[] { 1, 2 }, 100);
@@ -80,8 +73,7 @@ namespace SignalProcessing.Core.Tests
             Assert.Throws<ArgumentNullException>(() => SignalOperations.Sum(new[] { first, null }));
         }
 
-        //--------------Тест 24
-        [Fact]
+        [Fact] //Тест 24
         public void Sum_SourceSignals_NotChanged()
         {
             SingleChannelSignal first = new SingleChannelSignal(new float[] { 1, 2, 3 }, 100);

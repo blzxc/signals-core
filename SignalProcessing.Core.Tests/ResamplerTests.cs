@@ -9,8 +9,7 @@ namespace SignalProcessing.Core.Tests
 {
     public class ResamplerTests
     {
-        //--------------Тест 36
-        [Fact]
+        [Fact] //Тест 36
         public void Resample_SameFrequency_ReturnsSameData()
         {
             SingleChannelSignal signal = new SingleChannelSignal(new float[] { 1, 5, -2, 7 }, 10);
@@ -20,8 +19,7 @@ namespace SignalProcessing.Core.Tests
             AssertSignal.Equal(signal.Data, result.Data);
         }
 
-        //--------------Тест 37
-        [Fact]
+        [Fact] //Тест 37
         public void Resample_DoubleFrequency_ReturnsInterpolated()
         {
             SingleChannelSignal signal = new SingleChannelSignal(new float[] { 0, 2, 4, 8 }, 1);
@@ -32,8 +30,7 @@ namespace SignalProcessing.Core.Tests
             Assert.Equal(2f, result.Frequency, 1e-5f);
         }
 
-        //--------------Тест 38
-        [Fact]
+        [Fact] //Тест 38
         public void Resample_HalfFrequency_ReturnsEveryOther()
         {
             SingleChannelSignal signal = new SingleChannelSignal(new float[] { 0, 1, 2, 3, 4 }, 2);
@@ -43,8 +40,7 @@ namespace SignalProcessing.Core.Tests
             AssertSignal.Equal(new float[] { 0, 2, 4 }, result.Data);
         }
 
-        //--------------Тест 39
-        [Fact]
+        [Fact] //Тест 39
         public void Resample_NotIntegerRatio_ReturnsInterpolated()
         {
             SingleChannelSignal signal = new SingleChannelSignal(new float[] { 0, 3, 6, 9 }, 3);
@@ -54,8 +50,7 @@ namespace SignalProcessing.Core.Tests
             AssertSignal.Equal(new float[] { 0, 4.5f, 9 }, result.Data);
         }
 
-        //--------------Тест 40
-        [Fact]
+        [Fact] //Тест 40
         public void Resample_Line_StaysSameLine()
         {
             float[] data = new float[100];
@@ -75,8 +70,7 @@ namespace SignalProcessing.Core.Tests
             AssertSignal.Equal(expected, result.Data, 1e-4f);
         }
 
-        //--------------Тест 41
-        [Fact]
+        [Fact] //Тест 41
         public void Resample_OneSample_ReturnsSameSample()
         {
             SingleChannelSignal signal = new SingleChannelSignal(new float[] { 5 }, 10);
@@ -86,8 +80,7 @@ namespace SignalProcessing.Core.Tests
             AssertSignal.Equal(new float[] { 5 }, result.Data);
         }
 
-        //--------------Тест 41
-        [Fact]
+        [Fact] //Тест 41
         public void Resample_EmptySignal_ReturnsEmpty()
         {
             SingleChannelSignal signal = new SingleChannelSignal(new float[0], 10);
@@ -98,8 +91,7 @@ namespace SignalProcessing.Core.Tests
             Assert.Equal(20f, result.Frequency, 1e-5f);
         }
 
-        //--------------Тест 42
-        [Theory]
+        [Theory] //Тест 42
         [InlineData(0f)]
         [InlineData(-1f)]
         public void Resample_NotPositiveFrequency_Throws(float newFrequency)
@@ -110,8 +102,7 @@ namespace SignalProcessing.Core.Tests
                 () => Resampler.Resample(signal, newFrequency));
         }
 
-        //--------------Тест 42
-        [Fact]
+        [Fact] //Тест 42
         public void Resample_NullSignal_Throws()
         {
             Assert.Throws<ArgumentNullException>("signal",

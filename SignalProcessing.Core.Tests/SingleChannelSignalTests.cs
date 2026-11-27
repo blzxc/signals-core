@@ -9,16 +9,14 @@ namespace SignalProcessing.Core.Tests
 {
     public class SingleChannelSignalTests
     {
-        //--------------Тест 1
-        [Fact]
+        [Fact] //Тест 1
         public void Constructor_NullData_Throws()
         {
             Assert.Throws<ArgumentNullException>("data",
                 () => new SingleChannelSignal(null, 100));
         }
 
-        //--------------Тест 2
-        [Theory]
+        [Theory] //Тест 2
         [InlineData(0f)]
         [InlineData(-1f)]
         public void Constructor_NotPositiveFrequency_Throws(float frequency)

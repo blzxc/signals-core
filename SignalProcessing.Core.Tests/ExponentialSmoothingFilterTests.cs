@@ -9,8 +9,7 @@ namespace SignalProcessing.Core.Tests
 {
     public class ExponentialSmoothingFilterTests
     {
-        //--------------Тест Д.3.1
-        [Fact]
+        [Fact] //Тест Д.3.1
         public void Filter_ConstantSignal_ReturnsSameConstant()
         {
             ExponentialSmoothingFilter filter = new ExponentialSmoothingFilter(0.3f);
@@ -21,8 +20,7 @@ namespace SignalProcessing.Core.Tests
             AssertSignal.Equal(data, result);
         }
 
-        //--------------Тест Д.3.2
-        [Fact]
+        [Fact] //Тест Д.3.2
         public void Filter_AlphaOne_ReturnsInput()
         {
             ExponentialSmoothingFilter filter = new ExponentialSmoothingFilter(1);
@@ -33,8 +31,7 @@ namespace SignalProcessing.Core.Tests
             AssertSignal.Equal(data, result);
         }
 
-        //--------------Тест Д.3.3
-        [Fact]
+        [Fact] //Тест Д.3.3
         public void Filter_Step_ReturnsExpected()
         {
             float alpha = 0.5f;
@@ -50,8 +47,7 @@ namespace SignalProcessing.Core.Tests
             }
         }
 
-        //--------------Тест Д.3.4
-        [Theory]
+        [Theory] //Тест Д.3.4
         [InlineData(0f)]
         [InlineData(-0.5f)]
         [InlineData(1.5f)]

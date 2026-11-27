@@ -9,8 +9,7 @@ namespace SignalProcessing.Core.Tests
 {
     public class OfflineMedianFilterTests
     {
-        //--------------Тест 43
-        [Fact]
+        [Fact] //Тест 43
         public void Filter_SingleOutlier_IsRemoved()
         {
             float[] data = { 1, 1, 1, 9, 1, 1, 1 };
@@ -20,8 +19,7 @@ namespace SignalProcessing.Core.Tests
             AssertSignal.Equal(new float[] { 1, 1, 1, 1, 1, 1, 1 }, result);
         }
 
-        //--------------Тест 44
-        [Fact]
+        [Fact] //Тест 44
         public void Filter_Step_ReturnsSameStep()
         {
             float[] data = { 0, 0, 0, 1, 1, 1 };
@@ -31,8 +29,7 @@ namespace SignalProcessing.Core.Tests
             AssertSignal.Equal(data, result);
         }
 
-        //--------------Тест 45
-        [Fact]
+        [Fact] //Тест 45
         public void MovingAverage_Step_IsBlurred()
         {
             float[] data = { 0, 0, 0, 1, 1, 1 };
@@ -42,8 +39,7 @@ namespace SignalProcessing.Core.Tests
             Assert.NotEqual(data, result);
         }
 
-        //--------------Тест 48
-        [Theory]
+        [Theory] //Тест 48
         [InlineData(0)]
         [InlineData(-1)]
         [InlineData(4)]

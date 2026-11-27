@@ -9,8 +9,7 @@ namespace SignalProcessing.Core.Tests
 {
     public class OnlineMedianFilterTests
     {
-        //--------------Тест 46
-        [Fact]
+        [Fact] //Тест 46
         public void Filter_RandomSignal_EqualsOfflineWithDelay()
         {
             float[] data = CreateRandomSignal(1000);
@@ -24,8 +23,7 @@ namespace SignalProcessing.Core.Tests
             }
         }
 
-        //--------------Тест 47
-        [Theory]
+        [Theory] //Тест 47
         [InlineData(1)]
         [InlineData(7)]
         [InlineData(100)]
@@ -45,8 +43,7 @@ namespace SignalProcessing.Core.Tests
             AssertSignal.Equal(expected, result.ToArray());
         }
 
-        //--------------Тест 48
-        [Theory]
+        [Theory] //Тест 48
         [InlineData(0)]
         [InlineData(-1)]
         [InlineData(4)]
