@@ -77,6 +77,64 @@ namespace SignalProcessing.Core.Tests
                 () => new OnlineFilter(windowSize));
         }
 
+        [Fact]
+        public void Reset_AfterSignal_SameAsNewFilter()
+        {
+            OnlineFilter filter = new OnlineFilter(3);
+            float[] first_signal = { 10, 20, 30, 40 };
+            float[] second_signal = { 1, 2, 3, 4, 5 };
+            float[] expected = new OnlineFilter(3).Filter(second_signal);
+            filter.Filter(first_signal);
+
+            filter.Reset();
+            float[] result = filter.Filter(second_signal);
+
+            AssertSignal.Equal(expected, result);
+        }
+
+        [Fact]
+        public void Filter_WindowSizeOne_ReturnsInput()
+        {
+            OnlineFilter filter = new OnlineFilter(1);
+            float[] data = { 1, 5, -2, 7 };
+
+            float[] result = filter.Filter(data);
+
+            AssertSignal.Equal(data, result);
+        }
+
+        [Fact]
+        public void Filter_LongSignal_MatchesDirectCalculation()
+        {
+            Random random = new Random(42);
+            float[] data = new float[200000];
+            for (int i = 0; i < data.Length; i++)
+            {
+                data[i] = 900 + (float)random.NextDouble() * 200;
+            }
+            float[] expected = new float[data.Length];
+            for (int i = 0; i < data.Length; i++)
+            {
+                double sum = 0;
+                for (int j = i - 6; j <= i; j++)
+                {
+                    if (j < 0)
+                    {
+                        sum += data[0];
+                    }
+                    else
+                    {
+                        sum += data[j];
+                    }
+                }
+                expected[i] = (float)(sum / 7);
+            }
+
+            float[] result = new OnlineFilter(7).Filter(data);
+
+            AssertSignal.Equal(expected, result, 1e-3f);
+        }
+
         static private float[] CreateRandomSignal(int length)
         {
             Random random = new Random(42);
